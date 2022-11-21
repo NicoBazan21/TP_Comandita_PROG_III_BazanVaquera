@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "67c78828-e53c-4948-8d47-9df6e77f8521",
+		"name": "TP comandita circuito",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21079143"
+	},
+	"item": [
+		{
+			"name": "Crear Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "mozo",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "alias",
+							"value": "T3sT$JWT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3\\TP comandita\\app/jwt/crearToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"jwt",
+						"crearToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear empleados",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNjExNDEsImV4cCI6MTY2OTEyMTE0MSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImFkbWluIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.gv6zsuQVu7hz2mEK3VLPR0Va9FaNCojT7YaO5MNfx4E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "empleado",
+							"value": "cervecero",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "nico",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3\\TP comandita\\app/admin/altaEmpleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"admin",
+						"altaEmpleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar empleados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/listar/empleado?empleado=cocinero",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"listar",
+						"empleado"
+					],
+					"query": [
+						{
+							"key": "empleado",
+							"value": "cocinero"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tomar pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNjEyMzEsImV4cCI6MTY2OTEyMTIzMSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6Im1vem8iLCJhbGlhcyI6IlQzc1QkSldUIn0sImFwcCI6IlRlc3QgSldUIn0.f9VssI_M0qwXfq_SiQtBOpN5qaodQCNUfkdjpHJp1bI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Julian",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "cocinero",
+							"value": "Matambrito a la napolitana",
+							"type": "text"
+						},
+						{
+							"key": "cervecero",
+							"value": "vino",
+							"type": "text"
+						},
+						{
+							"key": "bartender",
+							"value": "coca cola",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "Matambrito a la napolitana con vino y coca",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "mesa",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "mozo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/mozo/tomarPedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"mozo",
+						"tomarPedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Relacionar pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNjEyMzEsImV4cCI6MTY2OTEyMTIzMSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6Im1vem8iLCJhbGlhcyI6IlQzc1QkSldUIn0sImFwcCI6IlRlc3QgSldUIn0.f9VssI_M0qwXfq_SiQtBOpN5qaodQCNUfkdjpHJp1bI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Index",
+							"type": "file",
+							"src": "/C:/Users/Rene/Desktop/Milanesa.jpg"
+						},
+						{
+							"key": "mesa",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "mozo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/mozo/tomarFoto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"mozo",
+						"tomarFoto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar pedidos por area",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNDA5MzgsImV4cCI6MTY2OTEwMDkzOCwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImNvY2luZXJvIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.UeYE2EHyYFUsGL3naCbnghHmTGSp6Evn4urvw8KqNs8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "cocinero",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/empleado/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"empleado",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Preparar pedidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNDA5MzgsImV4cCI6MTY2OTEwMDkzOCwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImNvY2luZXJvIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.UeYE2EHyYFUsGL3naCbnghHmTGSp6Evn4urvw8KqNs8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "cocinero",
+							"type": "text"
+						},
+						{
+							"key": "id_pedido",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/empleado/preparar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"empleado",
+						"preparar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cliente consulta demora",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/clientes/demora/?id_pedido=4&id_mesa=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"clientes",
+						"demora",
+						""
+					],
+					"query": [
+						{
+							"key": "id_pedido",
+							"value": "4"
+						},
+						{
+							"key": "id_mesa",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Socio consulta pedidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNDU5MjEsImV4cCI6MTY2OTEwNTkyMSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImFkbWluIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.CUXEvcATCi4-C-xDCWuluPgsDW7J3VXSFIxu2tko7r8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "id_mesa",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/admin/demoras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"admin",
+						"demoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empleados listos para servir",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNDY4MjEsImV4cCI6MTY2OTEwNjgyMSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImNvY2luZXJvIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.T7zq_BMRZ45QX1m4casae9D-V7E1iBCO5ySrDlPjhqY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_pedido",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "cocinero",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/empleado/listoParaServir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"empleado",
+						"listoParaServir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Servir mesa",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNDg3MTgsImV4cCI6MTY2OTEwODcxOCwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6Im1vem8iLCJhbGlhcyI6IlQzc1QkSldUIn0sImFwcCI6IlRlc3QgSldUIn0.d_fU-L2Jz2qOmnfTx9IPkoK0ng2W5ArPfSTm06hGzY4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_pedido",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "mozo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/mozo/servir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"mozo",
+						"servir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cobrar mesa",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkwNDg3MTgsImV4cCI6MTY2OTEwODcxOCwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6Im1vem8iLCJhbGlhcyI6IlQzc1QkSldUIn0sImFwcCI6IlRlc3QgSldUIn0.d_fU-L2Jz2qOmnfTx9IPkoK0ng2W5ArPfSTm06hGzY4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "mozo",
+							"type": "text"
+						},
+						{
+							"key": "id_pedido",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/mozo/cobrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"mozo",
+						"cobrar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
