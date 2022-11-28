@@ -108,6 +108,48 @@
 			"response": []
 		},
 		{
+			"name": "Crear Mesas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2Njk2NDk0MTksImV4cCI6MTY2OTcwOTQxOSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImFkbWluIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.1VOuJsZoPMy6_4gEL-mNjWwrXRfqhtXEa-eVcKbFV3M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_mesa",
+							"value": "15",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3\\TP comandita\\app/admin/altaMesa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"admin",
+						"altaMesa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Listar empleados",
 			"request": {
 				"method": "GET",
@@ -572,6 +614,173 @@
 						"cobrar"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cerrar mesa",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2Njk2NDk0MTksImV4cCI6MTY2OTcwOTQxOSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImFkbWluIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.1VOuJsZoPMy6_4gEL-mNjWwrXRfqhtXEa-eVcKbFV3M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_mesa",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3\\TP comandita\\app/admin/cerrarMesa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"admin",
+						"cerrarMesa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Encuesta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/clientes/encuesta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"clientes",
+						"encuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar mejores comentarios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2Njk2NDk0MTksImV4cCI6MTY2OTcwOTQxOSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImFkbWluIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.1VOuJsZoPMy6_4gEL-mNjWwrXRfqhtXEa-eVcKbFV3M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/admin/listarMejoresComentarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"admin",
+						"listarMejoresComentarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Descargar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2Njk2NDk0MTksImV4cCI6MTY2OTcwOTQxOSwiYXVkIjoiNmM4MmI3MzZmYzFkNTE1YThjODMwNDAxMmQ3M2JiNTAzYzFmOTM1YSIsImRhdGEiOnsiYXJlYSI6ImFkbWluIiwiYWxpYXMiOiJUM3NUJEpXVCJ9LCJhcHAiOiJUZXN0IEpXVCJ9.1VOuJsZoPMy6_4gEL-mNjWwrXRfqhtXEa-eVcKbFV3M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/Programacion 3/TP comandita/app/descargar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Programacion 3",
+						"TP comandita",
+						"app",
+						"descargar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cargar",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}

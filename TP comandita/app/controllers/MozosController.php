@@ -2,6 +2,7 @@
 
 require_once './models/Pedido.php';
 require_once './models/Producto.php';
+require_once './models/Mesa.php';
 require_once './controllers/PedidosController.php';
 require_once './controllers/ProductosController.php';
 require_once './controllers/MoverFotosController.php';
@@ -14,6 +15,12 @@ class MozosController
         if(isset($parametros['id_pedido']))
         {
             Pedido::establecerEstado($parametros['id_pedido'], 0, "Mesa cobrada");
+            $numMesa = Pedido::obtenerMesa($parametros['id_pedido']);
+            
+            $mesa = new Mesa();
+            $mesa->id_mesa = $numMesa->id_mesa;
+            $mesa->estado = "Cobrada";
+            $mesa->cambiarEstado();
 
             $payload = json_encode(array("Mesa Nº".$parametros['id_pedido'] => "Cobrada"));
             $response->getBody()->write($payload);
@@ -24,19 +31,29 @@ class MozosController
     public function Servir($request, $response)
     {
         $parametros = $request->getParsedBody();
-
         if(isset($parametros['id_pedido']))
         {
             $cocina = Producto::obtenerPorPedidoYArea("Cocina", $parametros['id_pedido']);
             $bartender = Producto::obtenerPorPedidoYArea("Bartender", $parametros['id_pedido']);
             $cerveceria = Producto::obtenerPorPedidoYArea("Cerveceria", $parametros['id_pedido']);
 
+            
             if($cocina->estado == "Listo para servir"
             && $bartender->estado == "Listo para servir"
             && $cerveceria->estado == "Listo para servir")
             {
+                $mesa = new Mesa();
+                $pedido = Pedido::obtenerMesa($parametros['id_pedido']);
+                $mesa->id_mesa = $pedido->id_mesa;
+                $mesa->estado = "Servida";
+                $mesa->cambiarEstado();
                 Pedido::establecerEstado($parametros['id_pedido'], 0, "Servido");
                 $payload = json_encode(array("Pedido" => "Servido"));
+                $response->getBody()->write($payload);
+            }
+            else
+            {
+                $payload = json_encode(array("Pedido" => "Aun no estan listos los productos"));
                 $response->getBody()->write($payload);
             }
         }
@@ -52,6 +69,15 @@ class MozosController
             $payload = json_encode(array("Pedido" => "Rechazado", "Estado" => "Pedido incompleto"));
             $request->withStatus(400);
             return $response;
+        }
+        else
+        {
+            $mesa = new Mesa();
+
+            $mesa->id_mesa = $parametros['mesa'];
+            $mesa->estado = "Atendida";
+
+            $mesa->cambiarEstado();
         }
 
         $id_pedido = PedidosController::generarPedido($request, $response);

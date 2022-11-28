@@ -1,6 +1,7 @@
 <?php
 
 require_once './models/Pedido.php';
+require_once './models/Encuesta.php';
 
 class ClientesController
 {
@@ -21,6 +22,31 @@ class ClientesController
 
             $response->getBody()->write($payload);
         }
+
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
+    public function Encuesta($request, $response)
+    {
+        $parametros = $request->getParsedBody();
+        if(isset($parametros['id_mesa']) && isset($parametros['id_pedido'])
+        && isset($parametros['calificacion']) && isset($parametros['comentarios']))
+        {
+            $encuesta = new Encuesta();
+            $encuesta->id_mesa = $parametros['id_mesa'];
+            $encuesta->id_pedido = $parametros['id_pedido'];
+            $encuesta->calificacion = $parametros['calificacion'];
+            $encuesta->comentarios = $parametros['comentarios'];
+
+            $encuesta->crearEncuesta();
+
+            $payload = json_encode(array("Estado"=>"Encuesta realizada"));
+        }
+        else
+        {
+            $payload = json_encode(array("Estado"=>"Peticion incompleta"));
+        }
+        $response->getBody()->write($payload);
 
         return $response->withHeader('Content-Type', 'application/json');
     }

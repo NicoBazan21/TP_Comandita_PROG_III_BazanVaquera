@@ -67,3 +67,16 @@ create table sesiones(
     values ("cervecero", 1234);
     insert into sesiones(area, clave)
     values ("cocinero", 1234);
+
+    create table mesas(
+    id_mesa int not null,
+    estado_mesa varchar(100)
+    );
+    
+create table encuestas(
+    id_pedido int not null,
+    id_mesa int not null,
+    calificacion int not null,
+    comentarios varchar(250)
+    );
+   

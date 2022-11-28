@@ -19,6 +19,7 @@ class Mozo
 
         return $objAccesoDatos->obtenerUltimoId();
     }
+    
     public static function obtenerTodos()
     {
         $objAccesoDatos = AccesoDatos::obtenerInstancia();

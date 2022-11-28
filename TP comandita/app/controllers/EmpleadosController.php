@@ -12,78 +12,95 @@ class EmpleadosController
     public function ListoParaServir($request, $response)
     {
         $parametros = $request->getParsedBody();
-
-        switch($parametros['area'])
+        if(isset($parametros['id_pedido']))
         {
-            case 'cocinero':
+        /*switch($parametros['area'])
+        {
+            case 'cocinero':*/
                 Cocinero::cambiarEstado($parametros['id_pedido'], "Listo para servir", "Libre");
                 Producto::cambiarEstado($parametros['id_pedido'], "Cocina", "Listo para servir");
                 $payload = json_encode(array("Pedido Nº ".$parametros['id_pedido'] => "Listo para servir", "Area"=>"Cocinero"));
-               break;
-            case 'bartender':
+               /*break;
+            case 'bartender':*/
                 Bartender::cambiarEstado($parametros['id_pedido'], "Listo para servir", "Libre");
                 Producto::cambiarEstado($parametros['id_pedido'], "Bartender", "Listo para servir");
                 $payload = json_encode(array("Pedido Nº ".$parametros['id_pedido'] => "Listo para servir", "Area"=>"Bartender"));
-                break;
-            case 'cervecero':
+                /*break;
+            case 'cervecero':*/
                 Cervecero::cambiarEstado($parametros['id_pedido'], "Listo para servir", "Libre");
                 Producto::cambiarEstado($parametros['id_pedido'], "Cerveceria", "Listo para servir");
                 $payload = json_encode(array("Pedido Nº ".$parametros['id_pedido'] => "Listo para servir", "Area"=>"Cervecero"));
-                break;
+                /*break;
+        }*/
         }
         $response->getBody()->write($payload);
         
         return $response;
     }
+
     public function Preparar($request, $response)
     {
         $parametros = $request->getParsedBody();
-        switch($parametros['area'])
+        if(isset($parametros['id_pedido']))
         {
-            case 'cocinero':
+        /*switch($parametros['area'])
+        {
+            case 'cocinero':*/
                 $producto = Cocinero::obtenerPendiente($parametros['id_pedido']);
                 $cocinero = Cocinero::obtenerLibre();
-                if($cocinero)
+                if($producto)
                 {
-                    Cocinero::prepararProducto($cocinero, $producto);
-                    Producto::cambiarEstado($parametros['id_pedido'], "Cocina", "Preparando");
-                    $payload = json_encode(array("Cocinero preparando" => $producto->descripcion));
+                    if($cocinero)
+                    {
+                        Cocinero::prepararProducto($cocinero, $producto);
+                        Producto::cambiarEstado($parametros['id_pedido'], "Cocina", "Preparando");
+                        $payload = json_encode(array("Cocinero preparando" => $producto->descripcion));
+                    }
+                    else
+                    {
+                        $payload = json_encode(array("Estado de la cocina" => "No hay cocineros libres"));
+                    }
                 }
-                else
-                {
-                    $payload = json_encode(array("Estado de la cocina" => "No hay cocineros libres"));
-                }
-                break;
-            case 'bartender':
+            /*    break;
+            case 'bartender':*/
                 $producto = Bartender::obtenerPendiente($parametros['id_pedido']);
                 $bartender = Bartender::obtenerLibre();
-                if($bartender)
+                if($producto)
                 {
-                    Bartender::prepararProducto($bartender, $producto);
-                    Producto::cambiarEstado($parametros['id_pedido'], "Bartender", "Preparando");
-                    $payload = json_encode(array("bartender preparando" => $producto->descripcion));
+                    if($bartender)
+                    {
+                        Bartender::prepararProducto($bartender, $producto);
+                        Producto::cambiarEstado($parametros['id_pedido'], "Bartender", "Preparando");
+                        $payload = json_encode(array("bartender preparando" => $producto->descripcion));
+                    }
+                    else
+                    {
+                        $payload = json_encode(array("Estado del bar" => "No hay bartenders libres"));
+                    }
                 }
-                else
-                {
-                    $payload = json_encode(array("Estado del bar" => "No hay bartenders libres"));
-                }
-                break;
-            case 'cervecero':
+            /*    break;
+            case 'cervecero':*/
                 $producto = Cervecero::obtenerPendiente($parametros['id_pedido']);
                 $cervecero = Cervecero::obtenerLibre();
-                if($cervecero)
+                if($producto)
                 {
-                    Cervecero::prepararProducto($cervecero, $producto);
-                    Producto::cambiarEstado($parametros['id_pedido'], "Cerveceria", "Preparando");
-                    $payload = json_encode(array("cervecero preparando" => $producto->descripcion));
+                    if($cervecero)
+                    {
+                        Cervecero::prepararProducto($cervecero, $producto);
+                        Producto::cambiarEstado($parametros['id_pedido'], "Cerveceria", "Preparando");
+                        $payload = json_encode(array("cervecero preparando" => $producto->descripcion));
+                    }
+                    else
+                    {
+                        $payload = json_encode(array("Estado de la cerveceria" => "No hay cerveceros libres"));
+                    }
                 }
-                else
-                {
-                    $payload = json_encode(array("Estado de la cerveceria" => "No hay cerveceros libres"));                }
-                break;
-        }
+              /*  break;
+        }*/
+            Pedido::establecerEstado($parametros['id_pedido'], rand(1,60), "En preparacion");
+
+        }   
         
-        Pedido::establecerEstado($parametros['id_pedido'], rand(1,60), "En preparacion");
         $response->getBody()->write($payload);
 
         return $response;

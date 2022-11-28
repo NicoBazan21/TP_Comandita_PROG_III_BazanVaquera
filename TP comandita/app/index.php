@@ -20,27 +20,15 @@ require_once './models/Cocinero.php';
 require_once './models/Mozo.php';
 require_once './models/Pedido.php';
 
-
+//controllers
 require_once './controllers/TokensController.php';
 require_once './controllers/EmpleadosController.php';
 require_once './controllers/MozosController.php';
 require_once './controllers/ClientesController.php';
-
-/*//controllers
-require_once './controllers/TokensController.php';
-require_once './controllers/UsuarioController.php';
-require_once './controllers/CriptoController.php';
-require_once './controllers/VentasController.php';
-
-//interfaces
-require_once './interfaces/ITokensUsable.php';
+require_once './controllers/MesasController.php';
+require_once './controllers/EncuestasController.php';
 
 //middlewares
-require_once './middlewares/AutentificadorJWT.php';
-require_once './middlewares/VerificarTokenMiddleware.php';
-require_once './middlewares/SoloAdminMiddleware.php';
-require_once './middlewares/UserExistenteMiddleware.php';*/
-
 require_once './middlewares/AutentificadorJWT.php';
 require_once './middlewares/SoloAdminMiddleware.php';
 require_once './middlewares/SoloMozosMiddleware.php';
@@ -82,20 +70,24 @@ $app->group('/empleado', function (RouteCollectorProxy $group)
 $app->group('/clientes', function (RouteCollectorProxy $group)
 {
   $group->get('/demora/', \ClientesController::class . ':Demora');
-
+  $group->post('/encuesta', \ClientesController::class . ':Encuesta');
 });
 
 $app->group('/admin', function (RouteCollectorProxy $group)
 {
   $group->post('/altaEmpleado', \EmpleadosController::class . ':CrearEmpleado');
   $group->post('/demoras', \PedidosController::class . ':ListarPedidos');
+  $group->post('/altaMesa', \MesasController::class . ':CrearMesa');
+  $group->post('/cerrarMesa', \MesasController::class . ':CerrarMesa');
+  $group->post('/listarMejoresComentarios', \EncuestasController::class . ':ListarMejoresCom');
+  $group->post('/listaMesaMasUsada', \PedidosController::class .'ListarMesaMasUsada');
+  $group->post('/cargar', \PedidosController::class . ':Cargar');
 
 })->add(new SoloAdminMiddleware);
 
 $app->group('/listar', function (RouteCollectorProxy $group)
 {
   $group->get('/empleado', \EmpleadosController::class . ':ListarEmpleado');
-
 });
 
 $app->group('/jwt', function (RouteCollectorProxy $group)
@@ -103,6 +95,7 @@ $app->group('/jwt', function (RouteCollectorProxy $group)
   $group->post('/crearToken', \TokensController::class . ':CrearToken');
 });
 
+$app->get('/descargar', \PedidosController::class . ':Descargar');
 
 $app->get('[/]', function (Request $request, Response $response) 
 {    

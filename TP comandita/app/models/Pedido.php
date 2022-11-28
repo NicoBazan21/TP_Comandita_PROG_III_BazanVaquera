@@ -63,6 +63,16 @@ class Pedido
 
         return $consulta->fetchObject('Pedido');
     }
+
+    public static function obtenerMesa($id_pedido)
+    {
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM pedidos WHERE id_pedido = :id_pedido");
+        $consulta->bindValue(':id_pedido', $id_pedido, PDO::PARAM_INT);
+        $consulta->execute();
+
+        return $consulta->fetchObject('Pedido');
+    }
 }
 
 
