@@ -23,3 +23,13 @@ Instrucciones:
 11. Servir mesa-> Token mozo. El mozo chequeara que los productos esten listos para servir, y pasara el estado del pedido a Servido.
 
 12. Cobrar mesa-> Token mozo. El mozo cobrara la mesa, y pasara el estado del pedido a Cobrado.
+
+13. Cerrar mesa-> Token admin. El administrador puede cerrar la mesa ingresada por postman.
+
+14. Encuesta -> cliente. Ingresando id mesa, id pedido, calificacion y el comentario. Se agregara a la tabla de encuestas lo ingresado.
+
+15. Listar mejores comentarios-> Token admin. Con area ingresada admin, seleccionara de manera creciente las encuestas con mejores puntuaciones.
+
+16. Descargar-> Descarga la tabla de pedidos de con extension csv. Ingresando la url por un navegador, se abrira automaticamente la descarga para poder guardarla en el directorio que el usuario lo decida.
+
+17. Cargar-> Carga a la tabla de pedidos, el archivo csv descargado anteriormente.
